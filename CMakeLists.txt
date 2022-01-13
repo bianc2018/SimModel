@@ -9,6 +9,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 #include(Sim)
 include(glfw)
+include(assimp)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src src_cc)
