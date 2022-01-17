@@ -10,6 +10,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 #include(Sim)
 include(glfw)
 include(assimp)
+include(glm)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src src_cc)
@@ -19,10 +20,10 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src src_cc)
 #target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
 
 add_library(${PROJECT_NAME} SHARED ${src_cc})
-target_link_libraries(${PROJECT_NAME} PRIVATE  glfw assimp)
+target_link_libraries(${PROJECT_NAME} PRIVATE  glfw assimp glm)
 
 add_library(${PROJECT_NAME}_static ${src_cc})
-target_link_libraries(${PROJECT_NAME}_static PRIVATE  glfw assimp)
+target_link_libraries(${PROJECT_NAME}_static PRIVATE  glfw assimp glm)
 
 add_subdirectory(example)
 option(BUILD_TESTS "Build tests." FALSE)
