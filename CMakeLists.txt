@@ -19,9 +19,10 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src src_cc)
 #target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
 
 add_library(${PROJECT_NAME} SHARED ${src_cc})
-add_library(${PROJECT_NAME}_STATIC ${src_cc})
+target_link_libraries(${PROJECT_NAME} PRIVATE  glfw assimp)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE  glfw)
+add_library(${PROJECT_NAME}_static ${src_cc})
+target_link_libraries(${PROJECT_NAME}_static PRIVATE  glfw assimp)
 
 add_subdirectory(example)
 option(BUILD_TESTS "Build tests." FALSE)
