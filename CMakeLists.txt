@@ -7,23 +7,28 @@ project (SimModel)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
-#include(Sim)
-include(glfw)
-include(assimp)
-include(glm)
+#依赖项
+set(DEPS glfw assimp glm glad stb_image)  
+#包含依赖项
+FOREACH(item ${DEPS})   
+   #message("include :")
+  message("include :" ${item})
+  include(${item})
+ENDFOREACH(item) 
+
+#include(glfw)
+#include(assimp)
+#include(glm)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src src_cc)
 
-#add_executable(${PROJECT_NAME})
-#target_sources(${PROJECT_NAME} PUBLIC ${src_cc})
-#target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
 
 add_library(${PROJECT_NAME} SHARED ${src_cc})
-target_link_libraries(${PROJECT_NAME} PRIVATE  glfw assimp glm)
+target_link_libraries(${PROJECT_NAME} PRIVATE  ${DEPS})
 
 add_library(${PROJECT_NAME}_static ${src_cc})
-target_link_libraries(${PROJECT_NAME}_static PRIVATE  glfw assimp glm)
+target_link_libraries(${PROJECT_NAME}_static PRIVATE  ${DEPS})
 
 add_subdirectory(example)
 option(BUILD_TESTS "Build tests." FALSE)
