@@ -8,4 +8,8 @@ project (glad)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src src_cc)
 
+Message("glad:" ${CMAKE_CURRENT_SOURCE_DIR} "src:" ${src_cc})
+
 add_library(${PROJECT_NAME} ${src_cc})
+
+target_include_directories(${PROJECT_NAME} PUBLIC include)

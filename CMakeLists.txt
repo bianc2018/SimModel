@@ -8,13 +8,15 @@ project (SimModel)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 #依赖项
-set(DEPS glfw assimp glm glad stb_image)  
+set(DEPS glfw assimp glm glad)  
 #包含依赖项
 FOREACH(item ${DEPS})   
    #message("include :")
   message("include :" ${item})
   include(${item})
 ENDFOREACH(item) 
+
+include(stb_image)
 
 #include(glfw)
 #include(assimp)
