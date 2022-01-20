@@ -79,11 +79,11 @@ int run_main(int argc, char* argv[])
 
     // build and compile shaders
     // -------------------------
-    Shader ourShader("1.model_loading.vs", "1.model_loading.fs");
+    Shader ourShader("D:\\code\\SimModel\\data\\1.model_loading.vs", "D:\\code\\SimModel\\data\\1.model_loading.fs");
 
     // load models
     // -----------
-    Model ourModel("resources/objects/backpack/backpack.obj");
+    Model ourModel("D:\\code\\SimModel\\data\\untitled.fbx");
 
 
     // draw in wireframe
